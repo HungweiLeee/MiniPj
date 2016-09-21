@@ -23,6 +23,11 @@ class Admin::PostsController < ApplicationController
 	def update
 
 		@post = Post.find(params[:id])
+
+		if params[:destroy_logo] == "1"
+    	@post.picture = nil
+    end
+
 		if @post.update(set_params)
 			redirect_to admin_posts_path
     else
@@ -50,7 +55,7 @@ class Admin::PostsController < ApplicationController
 	private
 
 	def set_params
-		params.require(:post).permit(:title, :content)
+		params.require(:post).permit(:title, :content, :picture)
 	end
 
 end
