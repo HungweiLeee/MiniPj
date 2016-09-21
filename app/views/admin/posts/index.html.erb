@@ -1,0 +1,13 @@
+<p> Admin index </p>
+
+<% @posts.each do |p| %>
+	<%= p.title %>
+	<%= link_to "Show", admin_post_path(p.id) %>
+	<%= link_to "Edit", edit_admin_post_path(p.id) %>
+	<%= link_to "Delete", admin_post_path(p.id), :method => :delete %>
+	<br>
+<% end %>
+
+<br>
+
+	<%= link_to "New", new_admin_post_path %>

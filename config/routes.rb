@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  resources :posts do
+		resources :comments
+  	member do 
+  		post :help
+  	end
+  end
+
+  namespace :admin do
+  	resources :posts
+  end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root :to => "welcome#index"
   #root :to => "posts#index"
