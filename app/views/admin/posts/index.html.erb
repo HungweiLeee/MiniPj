@@ -1,5 +1,8 @@
 <p> Admin index </p>
 
+<%= link_to "User Main Page", posts_path %>
+<br>
+
 <% @posts.each do |p| %>
 	<%= p.title %>
 	<%= link_to "Show", admin_post_path(p.id) %>

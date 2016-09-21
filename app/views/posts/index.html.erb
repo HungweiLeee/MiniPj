@@ -1,0 +1,8 @@
+<p> User index </p>
+
+<% @posts.each do |p| %>
+	<%= p.title %>
+	<%= link_to "Show", post_path(p.id) %>
+	
+	<br>
+<% end %>

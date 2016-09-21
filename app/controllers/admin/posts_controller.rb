@@ -20,6 +20,10 @@ class Admin::PostsController < ApplicationController
 
 	end
 
+	def show
+		@post = Post.find(params[:id])
+	end
+
 	def update
 
 		@post = Post.find(params[:id])
