@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921100659) do
+ActiveRecord::Schema.define(version: 20160928090340) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160921100659) do
     t.integer  "qty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "cart_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -46,6 +47,17 @@ ActiveRecord::Schema.define(version: 20160921100659) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer  "room_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["room_id"], name: "index_photos_on_room_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
@@ -55,6 +67,39 @@ ActiveRecord::Schema.define(version: 20160921100659) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "price"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "price"
+    t.integer  "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_reservations_on_room_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "home_type"
+    t.string   "room_type"
+    t.integer  "accommodate"
+    t.integer  "bed_room"
+    t.integer  "bath_room"
+    t.text     "summary"
+    t.boolean  "is_TV"
+    t.boolean  "is_WiFi"
+    t.integer  "price"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +120,8 @@ ActiveRecord::Schema.define(version: 20160921100659) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "phone_number"
+    t.text     "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

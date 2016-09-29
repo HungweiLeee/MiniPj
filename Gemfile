@@ -11,6 +11,20 @@ gem 'bootstrap_form'
 
 gem "paperclip", "~> 5.0.0"
 
+gem "font-awesome-rails"
+
+gem 'ransack'
+
+gem 'toastr-rails'
+
+gem 'geocoder'
+
+gem 'jquery-ui-rails'
+
+#gem 'sidekiq'
+
+#gem "ransack", github:"activerecord-hackery/ransack", branch:"master"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
@@ -43,6 +57,8 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+
+  gem 'rspec-rails'
 end
 
 group :development do

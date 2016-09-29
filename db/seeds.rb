@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Post.delete_all
+
+Post.create!([
+  {id: 1, title: "Nintendo Wii U Premium", content: 250},
+  {id: 2, title: "XBox 360 250GB", content: 250}
+])

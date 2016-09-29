@@ -1,16 +1,35 @@
 <p> Admin index </p>
 
-<%= link_to "User Main Page", posts_path %>
+<%= link_to "User Main Page", posts_path %> <%= link_to "New", new_admin_post_path %>
 <br>
 
-<% @posts.each do |p| %>
-	<%= p.title %>
-	<%= link_to "Show", admin_post_path(p.id) %>
-	<%= link_to "Edit", edit_admin_post_path(p.id) %>
-	<%= link_to "Delete", admin_post_path(p.id), :method => :delete %>
-	<br>
-<% end %>
 
-<br>
+<div class="container">
+  <div class="row">
+    <h2>Pinterest Responsive Grid</h2>
 
-	<%= link_to "New", new_admin_post_path %>
+    <p>Best viewed <a href="http://bootsnipp.com/iframe/Zkk0O" target="_blank">full screen</a>
+    </p>
+
+    <% @posts.each do |p| %>
+    	
+    	<%= link_to "Show", admin_post_path(p.id) %>
+    	<%= link_to "Edit", edit_admin_post_path(p.id) %>
+    	<%= link_to "Delete", admin_post_path(p.id), :method => :delete %>
+    	<br>
+   
+    <section id="pinBoot">
+
+      <article class="white-panel"><img src="http://i.imgur.com/sDLIAZD.png" alt="">
+        <h4><%= p.title %></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+
+    </section>
+
+    <hr>
+    
+    <% end %>
+  </div>
+</div>

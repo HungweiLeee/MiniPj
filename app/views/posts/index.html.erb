@@ -1,8 +1,26 @@
 <p> User index </p>
 
+<%= search_form_for @q, html: {class: "navbar-form navbar-align"} do |f|  %>
+  <div class="form-group">
+    <%= f.search_field :title, class: "form-control", placeholder: "输入商品名或價錢"  %>
+    <%= f.submit "搜索", class: "btn btn-warning"  %>
+  </div>
+<% end -%>
+
+<p>你的購物車項目:</p>
+
+<div id="cart-content">
+  <%= render "cart" %>
+</div>
+
 <% @posts.each do |p| %>
-	<%= p.title %>
-	<%= link_to "Show", post_path(p.id) %>
 	
-	<br>
+	<div class="post-item">
+		<br><%= p.title %>
+	  $<%= number_with_delimiter( p.price ) %>
+   	<div><%= link_to "幫助!", help_post_path(p), :remote => true, :method => :post, :class => "btn btn-danger" %></div>
+
+   	<%= link_to "Show", post_path(p.id) %>
+	</div>
+
 <% end %>

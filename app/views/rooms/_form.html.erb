@@ -1,0 +1,99 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Create your place!
+	</div>
+
+	<div class="panel-body">
+		<div class="container">
+			<%= form_for @room, :html => {:multipart => true} do |f| %>
+			
+				<div class="row">
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label> Home Type </label>
+							<%= f.select :home_type, [["Appartment", "Appartment"], ["House", "House"], ["B&B", "B&B"]], :id => 'home_type', :prompt => "Select...", :class => "form-control" %>
+						</div>
+					</div>
+
+						<div class="col-md-4 select">
+							<div class="form-group">
+								<label> Room Type </label>
+								<%= f.select :room_type, [["Private", "Private"], ["Shared", "Shared"], ["Entire", "Entire"]], :id => 'room_type', :prompt => "Select...", :class => "form-control" %>
+							</div>
+						</div>
+
+						<div class="col-md-4 select">
+							<div class="form-group">
+								<label> Accommodate </label>
+								<%= f.select :accommodate, [["1", 1], ["2", 2], ["3", 3]], :id => 'Accommodate', :prompt => "Select...", :class => "form-control" %>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				
+				<div class="row">
+		
+						<div class="col-md-4 select">
+							<div class="form-group">
+								<label> Bath_room </label>
+								<%= f.select :bath_room, [["1", 1], ["2", 2], ["3", 3], ["4", 4]], :id => 'bath_room', :prompt => "Select...", :class => "form-control" %>
+							</div>
+						</div>
+
+						<div class="col-md-4 select">
+							<div class="form-group">
+								<label> Bed_room </label>
+								<%= f.select :bed_room, [["1", 1], ["2", 2], ["3", 3],["4", 4]], :id => 'Accommodate', :prompt => "Select...", :class => "form-control" %>
+							</div>
+						</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<label> Summary </label>
+						<%= f.text_area :summary, rows: 5, placedholder: "Write it down", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<%= f.check_box :is_TV %> TV
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<%= f.check_box :is_WiFi %> WIFI
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<div class="input-group">
+								<label> Nighty price </label>
+										<%= f.text_field :price, placedholder: "eg. 1000", class: "form-control"%>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<span class="btn btn-default btn-file">
+								<i class="fa fa-cloud-upload fa-lg">Upload Photos</i>
+								<%= file_field_tag "images[]", type: :file, multiple: true %>
+							</span>
+						</div>
+					</div>
+				</div>
+				
+				<div id="photos"><%= render "photos/list", collection: @photos %></div>
+				
+				<%= f.submit "SAVE", class: "btn btn-primary"%>
+
+			<% end %>
+		</div>
+	</div>

@@ -1,0 +1,10 @@
+<ul>
+<% current_cart.line_items.each do |line| %>
+  <li>
+  
+    <%= line.post.title %> x <%= line.qty %> = <%= line.amount %>
+
+    <%= link_to "[x]", cancel_post_path(line.post), :method => :post, :remote => true %>
+  </li>
+<% end %>
+</ul>

@@ -9,7 +9,8 @@
   <div class="well">
       <div class="media">
       	<a class="pull-left" href="#">
-    			<img class="media-object" src="http://placekitten.com/150/150">
+
+    			<%= link_to image_tag(@post.picture.url(:thumb)), @post.picture.url %>
   			</a>
   		<div class="media-body">
     		<h4 class="media-heading"><%= @post.title %></h4>

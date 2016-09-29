@@ -1,0 +1,134 @@
+<h1>Rooms#show</h1>
+<p>Find me in app/views/rooms/show.html.erb</p>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<!-- G-map -->
+		<div class="row">
+			<div class="col-md-12">
+				<div id="map"></div>
+
+				<style>
+       	#map {
+        	height: 400px;
+        	width: 100%;
+       	}
+    		</style>
+
+    		<script>
+      		function initMap() {
+        		var uluru = {lat: -25.363, lng: 131.044};
+        		var map = new google.maps.Map(document.getElementById('map'), {
+          			zoom: 4, center: uluru});
+
+        		var marker = new google.maps.Marker({ position: uluru, map: map });
+      		}
+    		</script>
+
+			</div>
+		</div>
+		
+		<!-- Image Here -->
+		<div class="row">
+			<div class="col-md-12">
+				<%= image_tag @photos[0].image.url, class: "img-respinsive"%>
+			</div>
+		</div>
+
+		<!-- Main Info -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-3">
+						Avatar
+						<%= @room.user.email %>
+					</div>
+					<div class="col md-9">
+						<h4>Listing Name</h4>
+						<h5>Address</h5>
+
+						<div class="row text-cneter row-space-1">
+							<div class="col-sm-3">
+								<i class="fa fa-home fa-2x"></i>
+							</div>
+
+							<div class="col-sm-3">
+								<i class="fa fa-user fa-2x"></i>
+							</div>
+
+							<div class="col-sm-3">
+								<i class="fa fa-bed fa-2x"></i>
+							</div>
+
+							<div class="col-sm-3">
+								<i class="fa fa-ship fa-2x"></i>
+							</div>
+							
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-3">
+							<%= @room.home_type %>
+						</div>
+
+						<div class="col-sm-3">
+							<%= @room.accommodate %> <%= @room.accommodate > 1? "Guests" : "Guest"%>
+						</div>
+
+						<div class="col-sm-3">
+							<%= @room.bed_room %> <%= @room.bed_room > 1? "Bedrooms" : "bedroom"%>
+						</div>
+
+						<div class="col-sm-3">
+							<%= @room.bath_room %> <%= @room.bath_room > 1? "Bathrooms" : "Bathroom"%>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Reservation -->
+		<div class="col-md-4">
+			<%= render 'reservations/form'%>
+		</div>
+
+		<!-- About -->
+		<div class="row">
+			<div class="col-md-12">
+				<h2>About This</h2>
+					<p><%= @room.try(:summary) %></p>
+			</div>
+		</div>
+
+		<!-- Amenities -->
+		<div class="row">
+			<div class="col-md-2">
+				<p>Amenities</p>
+			</div>
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="Amenities">
+							<li calss= "<%= 'text-line-through' if !@room.is_TV %>">TV</li>
+							<li calss= "<%= 'text-line-through' if !@room.is_WiFi %>">WIFI</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<li calss= "<%= 'text-line-through' if !@room.is_TV %>">TV</li>
+						<li calss= "<%= 'text-line-through' if !@room.is_WiFi %>">WIFI</li>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Carousel-->
+		<div class="row">
+			
+		</div>
+		
+
+	</div>
+</div>	
