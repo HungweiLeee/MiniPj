@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
  	if @user.nil?
         redirect_to roots
+ 	end
  end
 
 end
