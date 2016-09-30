@@ -21,6 +21,10 @@ gem 'geocoder'
 
 gem 'jquery-ui-rails'
 
+gem 'pg'
+
+gem 'rails_12factor', group: :production
+
 #gem 'sidekiq'
 
 #gem "ransack", github:"activerecord-hackery/ransack", branch:"master"
