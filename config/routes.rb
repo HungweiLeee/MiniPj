@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   get '/cart' => "cart#index"
+  get '/preload' => "reservations#preload"
 
   resources :posts do
 		resources :comments

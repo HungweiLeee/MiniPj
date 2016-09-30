@@ -15,7 +15,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "rails_bootstrap_forms";
-@import "posts";
+@import "jquery-ui";
 @import "font-awesome";
 
 .container {
@@ -48,4 +48,10 @@ label {
 	background: white;
 	cursor: inherit;
 	display: block;
+}
+
+.reservatinon-table td {
+	width: 100%;
+	border: 1px solid #dce0e0;
+	padding: 10px;
 }

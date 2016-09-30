@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= reguire toastr
+//= require jquery-ui
 //= require_tree .

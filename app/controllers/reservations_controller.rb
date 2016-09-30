@@ -2,6 +2,14 @@ class ReservationsController < ApplicationController
 	
 	before_action :authenticate_user!
 
+	def preload
+		room = Room.find(params[:id])
+		today = Date.today
+		reservations = room.reservations.where("start_date >= ? OR end_date >= ?", today, today)
+
+		render json: reservations
+	end
+
 	def new
 		@rexervation = @room.reservations.new
 	end
